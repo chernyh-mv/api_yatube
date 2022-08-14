@@ -11,14 +11,12 @@ class PostViewSet(ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
-    
+
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
-
     def perform_update(self, serializer):
         serializer.save(author=self.request.user)
-
 
     def perform_destroy(self, serializer):
         serializer.delete()
@@ -35,7 +33,6 @@ class CommentViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
-
 
     def get_queryset(self):
         post = get_object_or_404(Post, id=self.kwargs['post_id'])
