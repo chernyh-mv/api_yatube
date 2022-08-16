@@ -44,7 +44,7 @@ pip install -r requirements.txt
 Cоздать базу данных и выполнить миграции
 
 ```
-cd yatube_api
+cd yatube_api/
 ```
 ```
 python manage.py makemigrations
